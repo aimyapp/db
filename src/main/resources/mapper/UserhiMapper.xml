@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.db.mapper.UserhiMapper">
+
+    <resultMap id="UserhiResultMap" type="com.example.db.domain.Userhi">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="delFlg" column="del_flg"/>
+    </resultMap>
+
+    <!-- 全件取得 -->
+    <select id="findAll" resultMap="UserhiResultMap">
+        SELECT * FROM userhi
+    </select>
+
+    <!-- ID指定で1件取得 -->
+    <select id="findById" resultMap="UserhiResultMap" parameterType="int">
+        SELECT * FROM userhi WHERE user_id = #{userId}
+    </select>
+
+</mapper>
